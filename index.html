@@ -3,36 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Legal AI Bot - NDA Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>NDA Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    #ndaOutput {
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Legal AI Bot: NDA Generator</h1>
-    
-    <form id="ndaForm">
-      <label for="partyA">Disclosing Party (Party A):</label>
-      <input type="text" id="partyA" placeholder="e.g., ABC Pvt Ltd" required />
+  <h1>Non-Disclosure Agreement Generator</h1>
 
-      <label for="partyB">Receiving Party (Party B):</label>
-      <input type="text" id="partyB" placeholder="e.g., XYZ Solutions" required />
+  <label for="date">Date:</label>
+  <input type="text" id="date" placeholder="e.g. August 1, 2025"/>
 
-      <label for="purpose">Purpose of Disclosure:</label>
-      <input type="text" id="purpose" placeholder="e.g., software development collaboration" required />
+  <label for="disclosingName">Disclosing Party Name:</label>
+  <input type="text" id="disclosingName"/>
 
-      <label for="duration">Agreement Duration (in years):</label>
-      <input type="number" id="duration" placeholder="e.g., 2" required />
+  <label for="disclosingAddress">Disclosing Party Address:</label>
+  <textarea id="disclosingAddress" rows="2"></textarea>
 
-      <label for="jurisdiction">Jurisdiction:</label>
-      <input type="text" id="jurisdiction" placeholder="e.g., New Delhi, India" required />
+  <label for="receivingName">Receiving Party Name:</label>
+  <input type="text" id="receivingName"/>
 
-      <button type="submit">Generate NDA</button>
-    </form>
+  <label for="receivingAddress">Receiving Party Address:</label>
+  <textarea id="receivingAddress" rows="2"></textarea>
 
-    <div id="ndaOutput" class="output"></div>
-  </div>
+  <button onclick="generateNDA()">Generate NDA</button>
+  <button onclick="downloadNDA()">Download NDA</button>
 
-  <script src="script.js"></script>
+  <div id="ndaOutput"></div>
+
+  <script>
+    function generateNDA() {
+      const date = document.getElementById("date").value;
+      const disclosingName = document.getElementById("disclosingName").value;
+      const disclosingAddress = document.getElementById("disclosingAddress").value;
+      const receivingName = document.getElementById("receivingName").value;
+      const receivingAddress = document.getElementById("receivingAddress").value;
+
+      const nda = `NON-DISCLOSURE AGREEMENT (NDA)
+This Nondisclosure Agreement ("Agreement") has been entered into on the date of
+${date} and is by and between:
+
+Party Disclosing Information: ${disclosingName} with a mailing address of
+${disclosingAddress} (“Disclosing Party”).
+
+Party Receiving Information: ${receivingName} with a mailing address of
+${receivingAddress} (“Receiving Party”).
+
+For the purpose of preventing the unauthorized disclosure of Confidential Information as defined below. The parties agree to enter into a confidential relationship concerning the disclosure of certain proprietary and confidential information ("Confidential Information").
+
+1. Definition of Confidential Information...
+[REMAINDER OF NDA CONTENT — include your full text here]
+
+DISCLOSING PARTY
+Signature: ____________________________
+Typed or Printed Name: ${disclosingName}    Date: ${date}
+
+RECEIVING PARTY
+Signature: ____________________________
+Typed or Printed Name: ${receivingName}    Date: ${date}
+`;
+
+      document.getElementById("ndaOutput").textContent = nda;
+    }
+
+    function downloadNDA() {
+      const text = document.getElementById("ndaOutput").textContent;
+      const blob = new Blob([text], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "NDA.txt";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
 </body>
 </html>
 
