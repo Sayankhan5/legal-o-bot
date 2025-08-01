@@ -1,6 +1,141 @@
 body {
   font-family: Times New Roman, sans-serif;
+  padding: 20px;/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 80px;
+  margin-right: 20px;
+  vertical-align: middle;
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
   padding: 20px;
+}
+
+/* Header Branding */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #032541;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Main Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headings */
+fieldset {
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+  color: #032541;
+}
+
+/* Labels and Inputs */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #007acc;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #005fa3;
+}
+
+/* NDA Output Box */
+.nda-output {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f0f4f8;
+  border-left: 5px solid #007acc;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
   background: #f4f4f4;
 }
 
