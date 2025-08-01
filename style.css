@@ -1,30 +1,25 @@
 body {
   font-family: Arial, sans-serif;
+  padding: 20px;
   background: #f4f4f4;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 30px;
+  max-width: 800px;
+  margin: auto;
   background: white;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 6px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1 {
-  text-align: center;
-}
-
-label {
+form label {
   display: block;
   margin-top: 15px;
   font-weight: bold;
 }
 
-input {
+form input {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -32,19 +27,20 @@ input {
 
 button {
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #0073e6;
+  padding: 10px 15px;
+  background-color: #007BFF;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .nda-output {
-  margin-top: 30px;
+  margin-top: 40px;
+  background: #fff9e6;
   padding: 20px;
-  background: #f0f0f0;
+  border-radius: 6px;
   white-space: pre-wrap;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  line-height: 1.5;
 }
+
