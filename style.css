@@ -1,72 +1,50 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   margin: 0;
-  padding: 20px;
-  color: #333;
+  padding: 0;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 10px;
+  max-width: 900px;
+  margin: 50px auto;
   padding: 30px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1, h2 {
+h1 {
   text-align: center;
-  color: #1e293b;
 }
 
-form label {
+label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
-form input,
-form textarea,
-form select {
+input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border 0.3s;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: none;
-  border-color: #0ea5e9;
+  padding: 8px;
+  margin-top: 5px;
 }
 
 button {
-  background-color: #0ea5e9;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0073e6;
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  display: block;
-  margin: 0 auto;
 }
 
-button:hover {
-  background-color: #0284c7;
-}
-
-#output {
-  margin-top: 40px;
-  white-space: pre-wrap;
-  background: #f0f9ff;
+.nda-output {
+  margin-top: 30px;
   padding: 20px;
-  border-radius: 8px;
-  border-left: 4px solid #0284c7;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.95rem;
+  background: #f0f0f0;
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
