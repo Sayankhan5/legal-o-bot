@@ -3,28 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NDA Generator</title>
+  <title>Professional NDA Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Non-Disclosure Agreement Generator</h1>
+    <h1>Non-Disclosure Agreement (NDA) Generator</h1>
     
     <form id="ndaForm">
-      <label>Disclosing Party Name:</label>
-      <input type="text" id="disclosingName" required>
+      <fieldset>
+        <legend><strong>Disclosing Party (Company)</strong></legend>
+        <label>Company Name:</label>
+        <input type="text" id="disclosingName" required>
 
-      <label>Disclosing Party Address:</label>
-      <input type="text" id="disclosingAddress" required>
+        <label>CIN (Corporate Identification Number):</label>
+        <input type="text" id="disclosingCIN" required>
 
-      <label>Receiving Party Name:</label>
-      <input type="text" id="receivingName" required>
+        <label>Is it a Section 8 Company?</label>
+        <select id="isSection8" required>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
 
-      <label>Receiving Party Address:</label>
-      <input type="text" id="receivingAddress" required>
+        <label>Registered Office Address:</label>
+        <input type="text" id="disclosingAddress" required>
+
+        <label>Authorized Representative Name:</label>
+        <input type="text" id="disclosingRep" required>
+
+        <label>Representative's PAN:</label>
+        <input type="text" id="disclosingPAN" required>
+
+        <label>Representative's Aadhaar:</label>
+        <input type="text" id="disclosingAadhar" required>
+      </fieldset>
+
+      <fieldset>
+        <legend><strong>Receiving Party</strong></legend>
+        <label>Receiving Party Name:</label>
+        <input type="text" id="receivingName" required>
+
+        <label>Receiving Party Address:</label>
+        <input type="text" id="receivingAddress" required>
+      </fieldset>
 
       <label>Effective Date:</label>
       <input type="date" id="effectiveDate" required>
+
+      <label>Purpose of NDA:</label>
+<textarea id="purpose" rows="3" required></textarea>
+
 
       <button type="submit">Generate NDA</button>
     </form>
