@@ -1,32 +1,36 @@
-body {
-  font-family: Times New Roman, sans-serif;
-  padding: 20px;/* General Reset */
+/* General Reset and Box Model */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.logo {
-  height: 80px;
-  margin-right: 20px;
-  vertical-align: middle;
-/* Body Styling */
+/* Body and Global Typography */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #f4f6f8;
   color: #333;
-  padding: 20px;
 }
 
-/* Header Branding */
+/* Main Content Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header and Branding */
 .header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
   background-color: #032541;
   color: white;
-  padding: 20px;
   border-radius: 8px;
   margin-bottom: 30px;
 }
@@ -41,22 +45,13 @@ body {
   font-weight: bold;
 }
 
-/* Main Container */
-.container {
-  max-width: 900px;
-  margin: auto;
-  background-color: white;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Section Headings */
+/* Form Sections (Fieldsets) */
 fieldset {
   margin-bottom: 25px;
   border: 1px solid #ddd;
   padding: 20px;
   border-radius: 8px;
+  background-color: #f9fafb;
 }
 
 legend {
@@ -65,11 +60,12 @@ legend {
   color: #032541;
 }
 
-/* Labels and Inputs */
+/* Form Inputs and Labels */
 label {
   display: block;
   margin-bottom: 6px;
   font-weight: 500;
+  color: #4b5563;
 }
 
 input[type="text"],
@@ -85,13 +81,13 @@ input[type="date"] {
 
 input:focus {
   outline: none;
-  border-color: #007acc;
-  box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
 }
 
 /* Submit Button */
 button[type="submit"] {
-  background-color: #007acc;
+  background-color: #2563eb;
   color: white;
   padding: 12px 24px;
   font-size: 16px;
@@ -100,19 +96,19 @@ button[type="submit"] {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
+  width: 100%;
 }
 
 button[type="submit"]:hover {
-  background-color: #005fa3;
+  background-color: #1d4ed8;
 }
 
-/* NDA Output Box */
+/* NDA Output Display Area */
 .nda-output {
   margin-top: 40px;
   padding: 20px;
   background-color: #f0f4f8;
-  border-left: 5px solid #007acc;
+  border-left: 5px solid #2563eb;
   border-radius: 6px;
   white-space: pre-wrap;
   font-family: 'Courier New', Courier, monospace;
@@ -120,7 +116,7 @@ button[type="submit"]:hover {
   overflow-y: auto;
 }
 
-/* Responsive */
+/* Responsive Design for Mobile */
 @media screen and (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -135,47 +131,3 @@ button[type="submit"]:hover {
     padding: 20px;
   }
 }
-
-  background: #f4f4f4;
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-form label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-form input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.nda-output {
-  margin-top: 40px;
-  background: #fff9e6;
-  padding: 20px;
-  border-radius: 6px;
-  white-space: pre-wrap;
-  line-height: 1.5;
-}
-
