@@ -1,83 +1,136 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NDA Generator</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDA Generator</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom font to match the design */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Ensure the output section uses a monospaced font for readability of legal text */
+      .nda-output {
+        white-space: pre-wrap;
+        font-family: 'Courier New', Courier, monospace;
+      }
+    </style>
 </head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8 flex items-center justify-center">
 
-<body>
-  <div class="header">
-    <img src="assets/images/legal-o-bot-logo.png" alt="LEGAL-O-BOT Logo" class="logo" />
-    <h1>📝 NDA Generator</h1>
-  </div>
+    <div class="max-w-4xl w-full bg-white rounded-lg shadow-xl p-6 md:p-10">
 
-  <div class="container">
-    <form id="ndaForm">
-      <fieldset>
-        <legend>A. Common Metadata</legend>
-        <label>Effective Date:</label>
-        <input type="date" id="effectiveDate" required />
+        <!-- Header -->
+        <header class="flex items-center justify-center text-center p-6 bg-blue-900 text-white rounded-t-lg mb-6">
+            <!-- Simple SVG logo for a clean, scalable look -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool mr-4 text-blue-300">
+              <path d="m12 19 7-7 3 3-7 7-3-3z"/>
+              <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+              <path d="m2 2 4.5 4.5"/>
+              <path d="m20 15 1.5 1.5"/>
+              <path d="m10.4 10.4 5.2 5.2"/>
+            </svg>
+            <h1 class="text-3xl font-bold">NDA Generator</h1>
+        </header>
 
-        <label>Agreement Term (Years):</label>
-        <input type="number" id="term" required />
+        <!-- Main Content Area -->
+        <main class="space-y-8">
+            <!-- The Form -->
+            <form id="ndaForm" class="space-y-6">
 
-        <label>Survival Clause Duration (Years):</label>
-        <input type="number" id="survival" required />
+                <!-- Section A: Common Metadata -->
+                <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-50">
+                    <legend class="text-lg font-semibold text-blue-900 px-2">A. Common Metadata</legend>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                        <div>
+                            <label for="effectiveDate" class="block text-sm font-medium text-gray-700">Effective Date</label>
+                            <input type="date" id="effectiveDate" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        </div>
+                        <div>
+                            <label for="term" class="block text-sm font-medium text-gray-700">Agreement Term (Years)</label>
+                            <input type="number" id="term" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        </div>
+                        <div>
+                            <label for="survival" class="block text-sm font-medium text-gray-700">Survival Clause (Years)</label>
+                            <input type="number" id="survival" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        </div>
+                        <div class="md:col-span-2 lg:col-span-1">
+                            <label for="purpose" class="block text-sm font-medium text-gray-700">Purpose of Disclosure</label>
+                            <input type="text" id="purpose" required placeholder="e.g., 'evaluation of a potential business venture'" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        </div>
+                    </div>
+                </fieldset>
 
-        <label>Purpose of Disclosure:</label>
-        <input type="text" id="purpose" required />
-      </fieldset>
+                <!-- Section B: Disclosing Party Details -->
+                <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-50">
+                    <legend class="text-lg font-semibold text-blue-900 px-2">B. Disclosing Party Details</legend>
+                    <div class="grid md:grid-cols-2 gap-4 mt-4">
+                        <input type="text" id="dEntity" required placeholder="Entity Type (e.g., 'Corporation')" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dName" required placeholder="Company/Individual Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dCIN" placeholder="CIN (if company)" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dSec8" placeholder="Section 8 Company? (Yes/No)" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dAddress" required placeholder="Registered Office Address" class="md:col-span-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dSign" required placeholder="Signatory Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dSignDesig" required placeholder="Signatory Designation" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dPAN" required placeholder="PAN" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="dAadhaar" required placeholder="Aadhaar" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                    </div>
+                </fieldset>
 
-      <fieldset>
-        <legend>B. Disclosing Party Details</legend>
-        <input type="text" placeholder="Entity Type" id="dEntity" required />
-        <input type="text" placeholder="Company/Individual Name" id="dName" required />
-        <input type="text" placeholder="CIN (if company)" id="dCIN" />
-        <input type="text" placeholder="Section 8 Company? (Yes/No)" id="dSec8" />
-        <input type="text" placeholder="Registered Office Address" id="dAddress" required />
-        <input type="text" placeholder="Signatory Name" id="dSign" required />
-        <input type="text" placeholder="Signatory Designation" id="dSignDesig" required />
-        <input type="text" placeholder="PAN" id="dPAN" required />
-        <input type="text" placeholder="Aadhaar" id="dAadhaar" required />
-      </fieldset>
+                <!-- Section C: Receiving Party Details -->
+                <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-50">
+                    <legend class="text-lg font-semibold text-blue-900 px-2">C. Receiving Party Details</legend>
+                    <div class="grid md:grid-cols-2 gap-4 mt-4">
+                        <input type="text" id="rEntity" required placeholder="Entity Type (e.g., 'Individual')" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rName" required placeholder="Company/Individual Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rCIN" placeholder="CIN (if company)" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rSec8" placeholder="Section 8 Company? (Yes/No)" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rAddress" required placeholder="Principal Address" class="md:col-span-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rSign" required placeholder="Signatory Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rSignDesig" required placeholder="Signatory Designation" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rPAN" required placeholder="PAN" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="rAadhaar" required placeholder="Aadhaar" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                    </div>
+                </fieldset>
 
-      <fieldset>
-        <legend>C. Receiving Party Details</legend>
-        <input type="text" placeholder="Entity Type" id="rEntity" required />
-        <input type="text" placeholder="Company/Individual Name" id="rName" required />
-        <input type="text" placeholder="CIN (if company)" id="rCIN" />
-        <input type="text" placeholder="Section 8 Company? (Yes/No)" id="rSec8" />
-        <input type="text" placeholder="Principal Address" id="rAddress" required />
-        <input type="text" placeholder="Signatory Name" id="rSign" required />
-        <input type="text" placeholder="Signatory Designation" id="rSignDesig" required />
-        <input type="text" placeholder="PAN" id="rPAN" required />
-        <input type="text" placeholder="Aadhaar" id="rAadhaar" required />
-      </fieldset>
+                <!-- Section D: Legal & Jurisdictional -->
+                <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-50">
+                    <legend class="text-lg font-semibold text-blue-900 px-2">D. Legal & Jurisdictional</legend>
+                    <div class="grid md:grid-cols-3 gap-4 mt-4">
+                        <input type="text" id="lawLocation" required placeholder="Governing Law Location" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="jurisdiction" required placeholder="Jurisdiction Court" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="arbitration" required placeholder="Arbitration City" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                    </div>
+                </fieldset>
 
-      <fieldset>
-        <legend>D. Legal & Jurisdictional</legend>
-        <input type="text" placeholder="Governing Law Location" id="lawLocation" required />
-        <input type="text" placeholder="Jurisdiction Court" id="jurisdiction" required />
-        <input type="text" placeholder="Arbitration City" id="arbitration" required />
-      </fieldset>
+                <!-- Section E: Witness Details -->
+                <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-50">
+                    <legend class="text-lg font-semibold text-blue-900 px-2">E. Witness Details</legend>
+                    <div class="grid md:grid-cols-2 gap-4 mt-4">
+                        <input type="text" id="w1Name" required placeholder="Witness 1 Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="w1Address" required placeholder="Witness 1 Address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="w2Name" required placeholder="Witness 2 Name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                        <input type="text" id="w2Address" required placeholder="Witness 2 Address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2">
+                    </div>
+                </fieldset>
 
-      <fieldset>
-        <legend>E. Witness Details</legend>
-        <input type="text" placeholder="Witness 1 Name" id="w1Name" required />
-        <input type="text" placeholder="Witness 1 Address" id="w1Address" required />
-        <input type="text" placeholder="Witness 2 Name" id="w2Name" required />
-        <input type="text" placeholder="Witness 2 Address" id="w2Address" required />
-      </fieldset>
+                <button type="submit" class="w-full py-3 px-4 bg-blue-600 text-white font-bold rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200">
+                    Generate NDA
+                </button>
+            </form>
 
-      <button type="submit">Generate NDA</button>
-    </form>
+            <!-- NDA Output Area -->
+            <article id="ndaOutput" class="nda-output mt-8 p-6 bg-gray-100 border-l-4 border-blue-500 rounded-lg shadow-inner overflow-auto h-auto max-h-96">
+                <p class="text-gray-500 text-center italic">Your generated NDA will appear here after you submit the form.</p>
+            </article>
 
-    <div id="ndaOutput" class="nda-output"></div>
-  </div>
-
-  <script src="script.js"></script>
+        </main>
+    </div>
+    <!-- Link to the separate JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
 
